@@ -10,7 +10,7 @@ export const getUsersRequest = () => ({
     type: Types.GET_USERS_REQUEST
 });
 
-export const getUsersSuccess = items => ({
+export const getUsersSuccess = ({ items }) => ({
     type: Types.GET_USERS_SUCCESS,
     payload: {
         items
@@ -32,7 +32,7 @@ export const deleteUserRequest = userId => ({
     }
 });
 
-export const usersError = error => ({
+export const usersError = ({ error }) => ({
     type: Types.USERS_ERROR,
     payload: {
         error

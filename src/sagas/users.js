@@ -35,7 +35,7 @@ function* watchCreateUserRequest() {
     yield takeLatest(actions.Types.CREATE_USER_REQUEST, createUser);
 }
 
-function* deleteUser({ userId }) {
+function* deleteUser(userId) {
     try {
         yield call(api.deleteUser, userId);
         yield call(getUsers);
@@ -48,10 +48,8 @@ function* deleteUser({ userId }) {
 
 function* watchDeleteUserRequest() {
     while (true) {
-        const action = yield take(actions.Types.DELETE_USER_REQUEST);
-        yield call(deleteUser, {
-            userId: action.payload.userId
-        });
+        const { payload } = yield take(actions.Types.DELETE_USER_REQUEST);
+        yield call(deleteUser, payload.userId);
     }
 }
 

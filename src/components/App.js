@@ -19,7 +19,7 @@ class App extends Component {
     });
   };
 
-  handleDeleteUserClick = ({ userId }) => {
+  handleDeleteUserClick = userId => {
     this.props.deleteUserRequest(userId);
   };
 
@@ -33,11 +33,14 @@ class App extends Component {
     const users = this.props.users;
     return (
       <div style={{ margin: "0 auto", padding: "20px", maxWidth: "600px" }}>
-        <Alert color="danger" isOpen={!this.props.users.error} toggle={this.handleCloseAlert}>
+        <h2>Users</h2>
+        <Alert color="danger" isOpen={!!this.props.users.error} toggle={this.handleCloseAlert}>
           {this.props.users.error}
         </Alert>
         <NewUserForm onSubmit={this.handleSubmit} />
-        <UsersList users={users.items} />
+        {!!users.items && !!users.items.length &&
+          <UsersList users={users.items} onDeleteUser={this.handleDeleteUserClick} />
+        }
       </div>
     );
   }

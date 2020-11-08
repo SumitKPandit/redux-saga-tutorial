@@ -1,8 +1,7 @@
 import { Types } from "../actions/users";
 
 const INITIAL_STATE = {
-    items: [],
-    error: ''
+    items: []
 };
 
 export default function users(state = INITIAL_STATE, action) {
@@ -14,7 +13,6 @@ export default function users(state = INITIAL_STATE, action) {
             };
         }
         case Types.USERS_ERROR: {
-            console.log(action.payload.error);
             return {
                 ...state,
                 error: action.payload.error

@@ -38,13 +38,13 @@ class NewUserForm extends Component {
                     <Label>
                         First name
                     </Label>
-                    <Input placeholder="First name" onChange={this.handleFirstNameChange} />
+                    <Input required type="text" value={this.state.firstName} placeholder="First name" onChange={this.handleFirstNameChange} />
                 </FormGroup>
                 <FormGroup>
                     <Label>
                         Last name
                     </Label>
-                    <Input placeholder="Last name" onChange={this.handleLastNameChange} />
+                    <Input required type="text" value={this.state.lastName} placeholder="Last name" onChange={this.handleLastNameChange} />
                 </FormGroup>
                 <FormGroup>
                     <Button block outline type="submit" color="primary">
